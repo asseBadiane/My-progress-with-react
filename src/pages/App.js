@@ -12,7 +12,7 @@ function App() {
 
   function handleAddTechno(techno) {
     console.log("handleAddTechno",techno)
-    setTechnos(...technos, techno)
+    setTechnos([...technos, techno])
   }
   return (
     <>
@@ -20,7 +20,7 @@ function App() {
     <Routes>
       <Route path='/' element={<Home />} />
       <Route path='/add' element={<TechnoAdd handleAddTechno={handleAddTechno} />} />
-      <Route path='/list' element={<TechnoList />} />
+      <Route path='/list' element={<TechnoList technos={technos} />} />
     </Routes>
       {/* <Menu />
       <Home />
