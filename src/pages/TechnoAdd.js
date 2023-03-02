@@ -1,27 +1,38 @@
+import { useState } from "react";
+
 export default function TechnoAdd(props) {
+    const [techno, setTechno] = useState({
+        technoname: '',
+        technocategory: '',
+        technodescription: '',
+    })
     const { handleAddTechno } = props;
-    const techno = {
-        name: 'React',
-        category: 'front',
-        description: 'learn React'
-    }
+    // const techno = {
+    //     name: 'React',
+    //     category: 'front',
+    //     description: 'learn React'
+    // }
     function handleSubmit(evt) {
         // Qui nous permet de ne pas ralechis la page
         evt.preventDefault();
         handleAddTechno(techno);
+    }
+    function handleChange(evt) {
+        const { name, value } = evt.target
+        setTechno({...techno, [name]: value})
     }
     return (
         <div className="techno-add">
              <h1>Add a Techno</h1>
              <div>
                 <form onSubmit={(evt) => handleSubmit(evt)}>
-                    <label htmlFor="techno-name">Name</label>
+                    <label htmlFor="technoname">Name</label>
                     <br />
-                    <input type="text" name="techno-name" id="techno-name"  />
+                    <input type="text" name="technoname" id="technoname" value={techno.techonname} onChange={(evt) => handleChange(evt)} />
                     <br />
-                    <label htmlFor="techno-category">Category:</label>
+                    <label htmlFor="technocategory">Category:</label>
                     <br />
-                    <select name="techno-category" id="techno-category">
+                    <select name="technocategory" id="technocategory" value={techno.technocategory} onChange={(evt) => handleChange(evt)}>
                         <option value="">Select a category</option>
                         <option value="front">Front</option>
                         <option value="back">Back</option>
@@ -29,13 +40,14 @@ export default function TechnoAdd(props) {
                         <option value="other">Other</option>
                     </select>
                     <br />
-                    <label htmlFor="techno-description" >Description:</label>
+                    <label htmlFor="technodescription" >Description:</label>
                     <br />
                     <textarea
-                        name="techno-description"
-                        id="techno-description"
+                        name="technodescription"
+                        id="technodescription"
                         cols="30"
-                        rows="10">
+                        rows="10"
+                        value={techno.technodescription} onChange={(evt) => handleChange(evt)}>
 
                     </textarea>
                     <br />
