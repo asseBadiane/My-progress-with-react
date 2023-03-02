@@ -1,9 +1,20 @@
-export default function TechnoAdd() {
+export default function TechnoAdd(props) {
+    const { handleAddTechno } = props;
+    const techno = {
+        name: 'React',
+        category: 'front',
+        description: 'learn React'
+    }
+    function handleSubmit(evt) {
+        // Qui nous permet de ne pas ralechis la page
+        evt.preventDefault();
+        handleAddTechno(techno);
+    }
     return (
         <div className="techno-add">
              <h1>Add a Techno</h1>
              <div>
-                <form>
+                <form onSubmit={(evt) => handleSubmit(evt)}>
                     <label htmlFor="techno-name">Name</label>
                     <br />
                     <input type="text" name="techno-name" id="techno-name"  />
@@ -18,9 +29,17 @@ export default function TechnoAdd() {
                         <option value="other">Other</option>
                     </select>
                     <br />
-                    <label htmlFor="techno-description">Description:</label>
+                    <label htmlFor="techno-description" >Description:</label>
                     <br />
-                    <input type="submit" value="Add Techno" />
+                    <textarea
+                        name="techno-description"
+                        id="techno-description"
+                        cols="30"
+                        rows="10">
+
+                    </textarea>
+                    <br />
+                    <input type="submit" value="Add Techno" className="btn"/>
                 </form>
              </div>
         </div>
