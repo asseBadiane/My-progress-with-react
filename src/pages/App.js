@@ -1,10 +1,18 @@
 // import logo from './logo.svg';
+import Menu from '../components/Menu';
 import '../css/app.css';
 import Home from './Home';
+import TechnoAdd from './TechnoAdd';
+import TechnoList from './TechnoList';
 
 function App() {
   return (
-    < Home />
+    <>
+      <Menu />
+      <Home />
+      <TechnoAdd />
+      <TechnoList />
+    </>
   );
 }
 
