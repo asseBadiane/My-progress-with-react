@@ -6,13 +6,14 @@ import '../css/app.css';
 import Home from './Home';
 import TechnoAdd from './TechnoAdd';
 import TechnoList from './TechnoList';
+import { v4 as uuidv4 } from 'uuid';
 
 function App() {
   const [technos, setTechnos] = useState([])
 
   function handleAddTechno(techno) {
     console.log("handleAddTechno",techno)
-    setTechnos([...technos, techno])
+    setTechnos([...technos, {...techno, technoid: uuidv4()}])
   }
   return (
     <>
