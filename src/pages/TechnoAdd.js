@@ -20,6 +20,12 @@ export default function TechnoAdd(props) {
     function handleChange(evt) {
         const { name, value } = evt.target
         setTechno({...techno, [name]: value})
+        // Après l'enregistrement du formulaire, on vide tout les champs avec leurs valeur au defaut
+        setTechno({
+            technoname: '',
+            technocategory: '',
+            technodescription: '',
+        })
     }
     return (
         <div className="techno-add">
