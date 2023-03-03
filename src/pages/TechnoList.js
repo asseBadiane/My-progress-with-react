@@ -1,7 +1,7 @@
 import TechnoItem from "../components/TechnoItem"
 
 export default function TechnoList(props) {
-    const { technos } = props
+    const { technos, handleDeleteTechno } = props
     return (
         <div className="techno-list">
             <h1>All Technos</h1>
@@ -9,7 +9,7 @@ export default function TechnoList(props) {
             <div>
               {
                 technos.map(techno => 
-                    < TechnoItem techno={techno} key={techno.technoid} />
+                    < TechnoItem techno={techno} key={techno.technoid} handleDeleteTechno={handleDeleteTechno} />
                     )
               }
            
