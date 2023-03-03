@@ -1,5 +1,5 @@
 // import logo from './logo.svg';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { Route, Routes } from 'react-router-dom';
 import Menu from '../components/Menu';
 import '../css/app.css';
@@ -7,9 +7,20 @@ import Home from './Home';
 import TechnoAdd from './TechnoAdd';
 import TechnoList from './TechnoList';
 import { v4 as uuidv4 } from 'uuid';
+import { useLocalStorage } from '../hooks/uselocalStrage';
 
 function App() {
   const [technos, setTechnos] = useState([])
+  const Stotage_key = 'technos'
+  const [storedTechnos, setStoredTechnos] = useLocalStorage(Stotage_key, [])
+  useEffect(() => {
+    console.log("UseEffect with")
+    setTechnos(storedTechnos)
+  },[])
+  useEffect(() => {
+    console.log("UseEffect with [technos]")
+    setStoredTechnos(technos)
+  },[technos])
 
   function handleAddTechno(techno) {
     console.log("handleAddTechno",techno)
@@ -18,8 +29,6 @@ function App() {
 
   function handleDeleteTechno(id) {
      setTechnos(technos.filter((tech) => tech.technoid !== id))
-
-
   }
   return (
     <>
